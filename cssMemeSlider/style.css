@@ -1,5 +1,15 @@
+body {
+    min-width: 20rem;
+}
+
 main {
-    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 48rem;
+    padding: 1rem;
 }
 
 .external-frame {
@@ -10,7 +20,9 @@ main {
 .internal-frame {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    width: 100%;
+    max-width: 62rem;
+    padding: 1rem;
 }
 
 .input {
@@ -18,26 +30,34 @@ main {
 }
 
 .meme__container {
+    overflow-x: hidden;
+}
+
+.memes {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    overflow: hidden;
+    width: 900%;
+    transition: transform 0.5s;
 }
 
-#meme1:checked ~ .meme__container > .meme__img {
-    transform: translateX(0);
+.meme {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 25%;
+    padding: 0.5rem;
 }
 
-#meme2:checked ~ .meme__container > .meme__img {
-    transform: translateX(calc(100% * - 1));
+#meme2:checked ~ .meme__container .memes {
+    transform: translateX(calc(-1 * 25%));
 }
 
-#meme3:checked ~ .meme__container > .meme__img {
-    transform: translateX(calc(100% * - 2));
+#meme3:checked ~ .meme__container .memes {
+    transform: translateX(calc(-2 * 25%));
 }
 
-#meme4:checked ~ .meme__container > .meme__img {
-    transform: translateX(calc(100% * - 3));
+#meme4:checked ~ .meme__container .memes {
+    transform: translateX(calc(-3 * 25%));
 }
 
 .meme__img {
@@ -50,7 +70,13 @@ main {
 .panel {
     display: flex;
     justify-content: space-between;
-    gap: 1rem;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.descs__container {
+    height: 3rem;
+    overflow: hidden;
 }
 
 .descs {
@@ -64,27 +90,23 @@ main {
     transition: 1.5s ease-out;
 }
 
-#meme1:checked ~ .panel > .descs > .desc {
-    transform: translateX(0);
+#meme2:checked ~ .panel .descs {
+    transform: translateX(calc(-1 * 25%));
 }
 
-#meme2:checked ~ .panel > .descs > .desc {
-    transform: translateX(100%* - 1);
+#meme3:checked ~ .panel .descs {
+    transform: translateX(calc(-2 * 25%));
 }
 
-#meme3:checked ~ .panel > .descs > .desc {
-    transform: translateX(100%* - 2);
-}
-
-#meme1:checked ~ .panel > .descs > .desc {
-    transform: translateX(100%* - 3);
+#meme1:checked ~ .panel .descs {
+    transform: translateX(calc(-3 * 25%));
 }
 
 .radio-buttons {
     display: flex;
-    justify-content: space-between;
+    column-gap: 0.5rem;
     align-items: center;
-    gap: 1rem;
+    height: 3rem;
 }
 
 .button {
